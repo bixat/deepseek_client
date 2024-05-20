@@ -1,0 +1,1 @@
+export 'src/deepseek_base.dart';

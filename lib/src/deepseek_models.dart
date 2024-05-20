@@ -1,0 +1,1 @@
+enum DeekSeepModels { chat, coder }
