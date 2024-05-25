@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:deepseek/src/deepseek_models.dart';
 import 'package:deepseek/src/models/no_stream_model.dart';
 import 'package:http/http.dart' as http;
@@ -69,7 +70,7 @@ class DeepSeekApiClient {
         throw Exception('Failed to send message: ${response.body}');
       }
     } catch (e) {
-      print('Error sending message: $e');
+      log('Error sending message: $e');
       rethrow;
     }
   }
