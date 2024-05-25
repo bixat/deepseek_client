@@ -31,6 +31,7 @@ class DeepSeepChat extends StatefulWidget {
 class DeepSeepChatState extends State<DeepSeepChat> {
   final TextEditingController _controller = TextEditingController();
   final DeepSeekApiClient _deepSeek = DeepSeekApiClient();
+  DeekSeekModels model = DeekSeekModels.chat;
   bool isLoading = false;
   final List<Message> _messages = [
     Message(content: "You are a helpful assistant", role: "system")
@@ -39,11 +40,11 @@ class DeepSeepChatState extends State<DeepSeepChat> {
 
   Future<void> _sendMessage() async {
     isLoading = true;
-    setState(() {
-      _messages.add(Message(role: 'user', content: _controller.text));
-      _controller.clear();
-    });
-    final nonStream = await _deepSeek.sendMessage(messages: _messages);
+    _messages.add(Message(role: 'user', content: _controller.text));
+    _controller.clear();
+    setState(() {});
+    final nonStream =
+        await _deepSeek.sendMessage(messages: _messages, model: model);
     _response = nonStream.choices?.first.message?.content;
     _messages.add(Message(content: _response!, role: "assistant"));
     isLoading = false;
@@ -56,6 +57,40 @@ class DeepSeepChatState extends State<DeepSeepChat> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('DeepSeek Chat'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                showMenu(
+                  context: context,
+                  position: const RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),
+                  items: DeekSeekModels.values
+                      .map(
+                        (e) => PopupMenuItem(
+                          value: e.name,
+                          child: Row(
+                            children: [
+                              if (model == e) const Icon(Icons.done),
+                              Text(e.name),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ).then((value) {
+                  if (value == 'chat') {
+                    setState(() {
+                      model = DeekSeekModels.chat;
+                    });
+                  } else if (value == 'coder') {
+                    setState(() {
+                      model = DeekSeekModels.coder;
+                    });
+                  }
+                });
+              },
+            ),
+          ],
         ),
         body: Column(
           children: [
@@ -85,11 +120,6 @@ class DeepSeepChatState extends State<DeepSeepChat> {
                 controller: _controller,
                 decoration: InputDecoration(
                     hintText: 'Type a message...',
-                    suffix: IconButton(
-                      icon: const Icon(Icons.settings),
-                      // TODO: Change model from here
-                      onPressed: () {},
-                    ),
                     suffixIcon: Visibility(
                       visible: isLoading,
                       replacement: IconButton(
