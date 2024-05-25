@@ -14,7 +14,7 @@ class DeepSeekApiClient {
     int frequencyPenalty = 0,
     int? maxTokens,
     int presencePenalty = 0,
-    bool? stream,
+    bool stream = false,
     double temperature = 1,
     double topP = 1,
     bool logProbs = false,
@@ -22,7 +22,7 @@ class DeepSeekApiClient {
     int? topLogProbs,
     DeekSeekModels model = DeekSeekModels.chat,
   }) async {
-    // Check if _token is null
+    // Check if _token is empty || null
     assert(_token.isNotEmpty, 'API token cannot be null.');
     // Validate integer parameters
     assert(frequencyPenalty >= -2 && frequencyPenalty <= 2,
@@ -30,7 +30,7 @@ class DeepSeekApiClient {
     assert(presencePenalty >= -2 && presencePenalty <= 2,
         'Presence penalty must be between -2 and 2.');
     assert(topLogProbs == null || (topLogProbs >= 0 && topLogProbs <= 20),
-        'Top Log Probs must be between 0 and 20.'); // Updated assertion for topLogProbs
+        'Top Log Probs must be between 0 and 20.');
 
     // Additional check for logProbs when topLogProbs is used
     if (topLogProbs != null && topLogProbs > 0) {
@@ -44,7 +44,7 @@ class DeepSeekApiClient {
       'frequency_penalty': frequencyPenalty,
       'max_tokens': maxTokens,
       'presence_penalty': presencePenalty,
-      'stream': stream ?? false,
+      'stream': stream,
       'temperature': temperature,
       'top_p': topP,
       'logprobs': logProbs,
