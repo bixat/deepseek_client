@@ -120,6 +120,7 @@ class DeepSeepChatState extends State<DeepSeepChat> {
                 controller: _controller,
                 decoration: InputDecoration(
                     hintText: 'Type a message...',
+                    border: const OutlineInputBorder(),
                     suffixIcon: Visibility(
                       visible: isLoading,
                       replacement: IconButton(
