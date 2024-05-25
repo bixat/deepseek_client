@@ -1,5 +1,6 @@
 import 'package:deepseek/deepseek.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 void main() {
   runApp(const MyApp());
@@ -108,7 +109,7 @@ class DeepSeepChatState extends State<DeepSeepChat> {
                       return const SizedBox.shrink();
                     }
                     return ListTile(
-                      title: Text(message.content),
+                      title: MarkdownBody(data: message.content),
                       subtitle: Text(message.role),
                     );
                   }
