@@ -48,6 +48,8 @@ void main() async {
 }
 ```
 
+[Flutter example](/example/lib/main.dart)
+
 Please note, this is an unofficial implementation and should be used with caution. Always ensure to review and test thoroughly before integrating into production environments.
 
 ## Contributing
