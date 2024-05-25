@@ -35,9 +35,7 @@ Here's a simple example of how to use the `DeepSeekApiClient` to send a message 
 import 'package:deepseek/deepseek.dart';
 
 void main() async {
-  final deepSeekClient = DeepSeekClient();
-
-  final response = await deepSeekClient.sendMessage(
+  final response = await DeepSeekClient.sendMessage(
     messages: [
       Message(content: "Hello, how can I assist you?", role: "system"),
     ],

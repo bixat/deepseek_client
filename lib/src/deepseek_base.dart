@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 import 'models/message_model.dart';
 
 class DeepSeekClient {
-  final String _baseUrl = 'https://api.deepseek.com';
+  static const String _baseUrl = 'https://api.deepseek.com';
   static const String _token = String.fromEnvironment("deepseek_token");
-  Future<NoSream> sendMessage({
+  static Future<NoSream> sendMessage({
     required List<Message> messages,
     int frequencyPenalty = 0,
     int? maxTokens,
