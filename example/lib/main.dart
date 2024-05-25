@@ -32,7 +32,6 @@ class DeepSeepChat extends StatefulWidget {
 
 class DeepSeepChatState extends State<DeepSeepChat> {
   final TextEditingController _controller = TextEditingController();
-  final DeepSeekClient _deepSeek = DeepSeekClient();
   DeekSeekModels model = DeekSeekModels.chat;
   bool isLoading = false;
   final List<Message> _messages = [
@@ -46,7 +45,7 @@ class DeepSeepChatState extends State<DeepSeepChat> {
     _controller.clear();
     setState(() {});
     final nonStream =
-        await _deepSeek.sendMessage(messages: _messages, model: model);
+        await DeepSeekClient.sendMessage(messages: _messages, model: model);
     _response = nonStream.choices?.first.message?.content;
     _messages.add(Message(content: _response!, role: "assistant"));
     isLoading = false;
