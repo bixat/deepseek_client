@@ -8,7 +8,6 @@ import 'models/message_model.dart';
 class DeepSeekApiClient {
   final String _baseUrl = 'https://api.deepseek.com';
   static const String _token = String.fromEnvironment("deepseek_token");
-
   Future<NoSream> sendMessage({
     required List<Message> messages,
     int frequencyPenalty = 0,
@@ -23,7 +22,7 @@ class DeepSeekApiClient {
     DeekSeepModels model = DeekSeepModels.chat,
   }) async {
     // Check if _token is null
-    assert(_token.isEmpty, 'API token cannot be null.');
+    assert(_token.isNotEmpty, 'API token cannot be null.');
     // Validate integer parameters
     assert(frequencyPenalty >= -2 && frequencyPenalty <= 2,
         'Frequency penalty must be between -2 and 2.');
