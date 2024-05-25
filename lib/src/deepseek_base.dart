@@ -20,7 +20,7 @@ class DeepSeekApiClient {
     bool logProbs = false,
     dynamic stop,
     int? topLogProbs,
-    DeekSeepModels model = DeekSeepModels.chat,
+    DeekSeekModels model = DeekSeekModels.chat,
   }) async {
     // Check if _token is null
     assert(_token.isNotEmpty, 'API token cannot be null.');
