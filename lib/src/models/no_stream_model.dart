@@ -1,4 +1,4 @@
-import 'package:deepseek_client/src/models/message_model.dart';
+import 'message_model.dart';
 
 class NoSream {
   String? id;

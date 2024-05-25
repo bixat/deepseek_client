@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:deepseek_client/src/deepseek_models.dart';
-import 'package:deepseek_client/src/models/no_stream_model.dart';
+
 import 'package:http/http.dart' as http;
 
+import 'deepseek_models.dart';
 import 'models/message_model.dart';
+import 'models/no_stream_model.dart';
 
 class DeepSeekClient {
   static const String _baseUrl = 'https://api.deepseek.com';
