@@ -126,7 +126,7 @@ class DeepSeepChatState extends State<DeepSeepChat> {
                       visible: isLoading,
                       replacement: IconButton(
                         icon: const Icon(Icons.send),
-                        onPressed: () => _sendMessage(),
+                        onPressed: _sendMessage,
                       ),
                       child: Transform.scale(
                         scale: 0.5,
