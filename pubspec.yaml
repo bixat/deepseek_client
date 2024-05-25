@@ -1,5 +1,5 @@
-name: deepseek
-description: "A new Flutter package project."
+name: deepseek_client
+description: "Dart library for DeepSeek API interaction, facilitating message exchange and response processing."
 version: 0.0.1
 
 environment:

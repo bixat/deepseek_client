@@ -1,39 +1,59 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# DeepSeek Base Client
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+An unofficial Dart client library for interacting with the DeepSeek API, providing functionalities to send messages and receive responses from the DeepSeek service.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+**Message Sending**: Easily send messages to the DeepSeek service and handle responses.
 
-## Getting started
+**Model Selection**: Support for different models (`chat`, `coder`) to tailor the AI's responses to various contexts.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Getting Started
 
-## Usage
+### Prerequisites
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+**Obtain an API Key**: Register on [the DeepSeek platform](https://platform.deepseek.com/api_keys) to get your API key. As part of the registration process, you will receive 4 million tokens for free.
+  
+**Pass the API Key**: Pass the obtained API key to your Dart application using the `deepseek_token` environment variable. This can be done by setting the environment variable in your operating system or directly in your Dart code using the `--dart-define` flag when launching your application
 
-```dart
-const like = 'sample';
+### Installation
+
+Add `deepseek` to your `pubspec.yaml` dependencies:
+
+```yaml
+dependencies:
+  deepseek_client: ^latest_version
 ```
 
-## Additional information
+Replace `^latest_version` with the actual latest version available on [pub.dev](https://pub.dev/packages/deepseek_client).
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### Example Usage
+
+Here's a simple example of how to use the `DeepSeekApiClient` to send a message and print the response:
+
+```dart
+import 'package:deepseek/deepseek.dart';
+
+void main() async {
+  final deepSeekClient = DeepSeekClient();
+
+  final response = await deepSeekClient.sendMessage(
+    messages: [
+      Message(content: "Hello, how can I assist you?", role: "system"),
+    ],
+    model: DeekSeekModels.chat,
+  );
+
+  print(response.choices.first.message.content);
+}
+```
+
+Please note, this is an unofficial implementation and should be used with caution. Always ensure to review and test thoroughly before integrating into production environments.
+
+## Contributing
+
+Contributions are welcome. Please feel free to submit pull requests or open issues for discussion.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

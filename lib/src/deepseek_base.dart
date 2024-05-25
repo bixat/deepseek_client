@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:deepseek/src/deepseek_models.dart';
-import 'package:deepseek/src/models/no_stream_model.dart';
+import 'package:deepseek_client/src/deepseek_models.dart';
+import 'package:deepseek_client/src/models/no_stream_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'models/message_model.dart';
 
-class DeepSeekApiClient {
+class DeepSeekClient {
   final String _baseUrl = 'https://api.deepseek.com';
   static const String _token = String.fromEnvironment("deepseek_token");
   Future<NoSream> sendMessage({

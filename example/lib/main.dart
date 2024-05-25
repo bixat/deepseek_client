@@ -1,4 +1,4 @@
-import 'package:deepseek/deepseek.dart';
+import 'package:deepseek/deepseek_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -32,7 +32,7 @@ class DeepSeepChat extends StatefulWidget {
 
 class DeepSeepChatState extends State<DeepSeepChat> {
   final TextEditingController _controller = TextEditingController();
-  final DeepSeekApiClient _deepSeek = DeepSeekApiClient();
+  final DeepSeekClient _deepSeek = DeepSeekClient();
   DeekSeekModels model = DeekSeekModels.chat;
   bool isLoading = false;
   final List<Message> _messages = [

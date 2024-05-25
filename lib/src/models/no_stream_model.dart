@@ -1,4 +1,4 @@
-import 'package:deepseek/src/models/message_model.dart';
+import 'package:deepseek_client/src/models/message_model.dart';
 
 class NoSream {
   String? id;
@@ -63,9 +63,8 @@ class Choices {
     index = json['index'];
     message =
         json['message'] != null ? Message.fromJson(json['message']) : null;
-    logprobs = json['logprobs'] != null
-        ? Logprobs.fromJson(json['logprobs'])
-        : null;
+    logprobs =
+        json['logprobs'] != null ? Logprobs.fromJson(json['logprobs']) : null;
   }
 
   Map<String, dynamic> toJson() {
