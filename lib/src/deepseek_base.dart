@@ -64,7 +64,7 @@ class DeepSeekApiClient {
       );
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
-        var decoded = jsonDecode(response.body);
+        var decoded = jsonDecode(utf8.decode(response.bodyBytes));
         return NoSream.fromJson(decoded);
       } else {
         throw Exception('Failed to send message: ${response.body}');
